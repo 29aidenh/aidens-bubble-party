@@ -72,8 +72,8 @@ game.onUpdateInterval(500, function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Projectile)
-        mySprite.setVelocity(0, speed)
-        mySprite.setPosition(30, 8)
+        lefty.setVelocity(0, speed)
+        lefty.setPosition(30, 8)
     } else if (Alane1 == 2) {
         UP = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -93,8 +93,8 @@ game.onUpdateInterval(500, function () {
             . . . 9 9 9 9 9 9 9 9 9 9 . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Player)
-        mySprite.setVelocity(0, speed)
-        mySprite.setPosition(60, 8)
+        UP.setVelocity(0, speed)
+        UP.setPosition(60, 8)
     } else if (Alane1 == 4) {
         IMRight = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -114,8 +114,8 @@ game.onUpdateInterval(500, function () {
             . . . 9 9 9 9 9 9 9 9 9 9 . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Player)
-        mySprite.setVelocity(0, speed)
-        mySprite.setPosition(130, 8)
+        IMRight.setVelocity(0, speed)
+        IMRight.setPosition(130, 8)
     } else if (Alane1 == 3) {
         URGOINGDOWN = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -135,7 +135,7 @@ game.onUpdateInterval(500, function () {
             . . . 9 9 9 9 9 9 9 9 9 9 . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Player)
-        mySprite.setVelocity(0, speed)
-        mySprite.setPosition(100, 8)
+        URGOINGDOWN.setVelocity(0, speed)
+        URGOINGDOWN.setPosition(100, 8)
     }
 })
