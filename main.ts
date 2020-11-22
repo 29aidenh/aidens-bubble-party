@@ -4,11 +4,15 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setPosition(30, 100)
 })
+scene.onHitWall(SpriteKind.Enemy, function (sprite, location) {
+    sprite.destroy()
+    info.changeLifeBy(-2)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setPosition(130, 100)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.fire, 500)
+    otherSprite.destroy()
     info.changeScoreBy(1)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -21,15 +25,14 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     sprite.destroy()
     info.changeLifeBy(-1)
 })
-let projectile: Sprite = null
+let mySprite2: Sprite = null
 let down: Sprite = null
 let IMRight: Sprite = null
 let UP: Sprite = null
-let speed = 0
 let lefty: Sprite = null
 let Alane1 = 0
 let mySprite: Sprite = null
-tiles.setTilemap(tiles.createTilemap(hex`0a0008000101010101010101010101010101010101010101020202020202020202020202020202020202020203030303030303030303030303030303030303030404040404040404040404040404040404040404`, img`
+tiles.setTilemap(tiles.createTilemap(hex`0a0008000101010101010101010101010101010101010101020202020202020202020202020202020202020203030303030303030303030303030303030303030404040404040404040405050505050505050505`, img`
     . . . . . . . . . . 
     . . . . . . . . . . 
     . . . . . . . . . . 
@@ -38,7 +41,7 @@ tiles.setTilemap(tiles.createTilemap(hex`0a0008000101010101010101010101010101010
     . . . . . . . . . . 
     . . . . . . . . . . 
     . . . . . . . . . . 
-    `, [myTiles.transparency16,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4], TileScale.Sixteen))
+    `, [myTiles.transparency16,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5], TileScale.Sixteen))
 effects.bubbles.startScreenEffect()
 mySprite = sprites.create(img`
     . . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
@@ -59,7 +62,7 @@ mySprite = sprites.create(img`
     . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
     `, SpriteKind.Player)
 mySprite.setPosition(80, 100)
-let Aiden_Hspeed = 40
+let speed = 40
 info.setScore(0)
 info.setLife(5)
 game.onUpdateInterval(2000, function () {
@@ -154,7 +157,7 @@ game.onUpdateInterval(2000, function () {
     speed += 1
 })
 game.onUpdateInterval(randint(7500, 10000), function () {
-    projectile = sprites.createProjectileFromSprite(img`
+    mySprite2 = sprites.create(img`
         ........999999999999ccfff...............
         .......999ffffffffff9999f...............
         .......99fbbbbbbbbbfff9f9...............
@@ -175,5 +178,7 @@ game.onUpdateInterval(randint(7500, 10000), function () {
         .......99999............................
         ........999.............................
         ........................................
-        `, mySprite, 50, 50)
+        `, SpriteKind.Projectile)
+    mySprite2.setPosition(75, 0)
+    mySprite2.setVelocity(50, randint(105, 152))
 })
